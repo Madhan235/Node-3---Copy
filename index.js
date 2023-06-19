@@ -7,7 +7,7 @@ import { mentorsRouter } from './routers/mentor.js';
  //middleware for post and put
  app.use(express.json());
 
-const port = 9000;
+ const port =process.env.port;
  //studentsRouter
 app.use("/students",studentsRouter)
 
