@@ -1,12 +1,17 @@
 import express from 'express';
 import { addStudent, deleteStudent, editStudent, getAllStudents, getStudentById } from '../contorllers/students.js';
 import jwt from "jsonwebtoken";
-import { generateJwtToken } from '../contorllers/user.js';
 const router = express.Router();
 
 router.get("/all", async (req, res)=>{
 
     try {
+const token = req.headers["auth-token"];
+
+if(!token){
+res.status(400).json({data:"invalid authorization"})
+}
+jwt.verify(token, process.env.secretkey)
 
         if(req.query.experience){
             req.query.experience = +req.query.experience
