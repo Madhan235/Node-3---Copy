@@ -31,7 +31,7 @@ router.post("/login", async (req, res)=>{
         const validatePassword = 
         await bcrypt.compare(req.body.password, user.password)
         if(!validatePassword){
-            return res.status(400).json({data:"Invalid password"})
+            return res.status(400).json({data:{message:"Invalid password"}})
         }
         
       const token = generateJwtToken(user._id)
