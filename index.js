@@ -4,7 +4,7 @@ import { mentorsRouter } from './routers/mentor.js';
  import dotenv from "dotenv";
 import { userRouter } from './routers/user.js';
 import { isAuthenticated } from './Authentication/auth.js';
-
+import cors from "cors"
 
 
 //config dotenv
@@ -13,7 +13,7 @@ import { isAuthenticated } from './Authentication/auth.js';
  const app = express();
  //middleware for post and put
  app.use(express.json());
-
+app.use(cors());
  const port = process.env.port;
  //studentsRouter
 app.use("/students",isAuthenticated ,studentsRouter)
