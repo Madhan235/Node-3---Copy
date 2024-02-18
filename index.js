@@ -16,7 +16,7 @@ import cors from "cors"
  app.use(cors());
  const port =  8080;
  //studentsRouter
-app.use("/students",isAuthenticated ,studentsRouter)
+app.use("/students",studentsRouter)
 
 app.use("/users",userRouter)
 //mentorsRouter
