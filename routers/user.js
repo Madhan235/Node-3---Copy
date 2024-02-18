@@ -11,7 +11,9 @@ try {
         const hashedPassword = await bcrypt.hash(req.body.password, salt) 
     const hashedUser = await {...req.body, password : hashedPassword}
 await addUser(hashedUser)
-   return res.status(200).json({data:{userInfo : hashedUser} })    
+const id = "df334hgkgf"
+const token =  generateJwtToken(id);
+   return res.status(200).json({token: token })    
 }
     res.status(400).json({data: "Sorry, E-mail already exists"})
 
