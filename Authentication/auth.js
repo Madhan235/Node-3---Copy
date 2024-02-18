@@ -6,7 +6,12 @@ export async function isAuthenticated(req,res, next){
  if(!token){
    return res.status(400).json({data: "Invalid authorization"})
  } 
-    jwt.verify(token, process.env.secretkey)
+    jwt.verify(token, process.env.secretkey,(err)=>{
+      if(err){
+        return res.status(400).json({data: "Invalid authorization"})
+      }
+
+    })
 
 next();
    

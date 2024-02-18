@@ -13,8 +13,8 @@ import cors from "cors"
  const app = express();
  //middleware for post and put
  app.use(express.json());
-app.use(cors());
- const port = process.env.port;
+ app.use(cors());
+ const port =  8080;
  //studentsRouter
 app.use("/students",isAuthenticated ,studentsRouter)
 
